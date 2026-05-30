@@ -1,29 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/Navbar";
+import { TrustBar } from "@/components/landing/TrustBar";
+import { Hero } from "@/components/landing/Hero";
+import { Products } from "@/components/landing/Products";
+import { Leaderboard } from "@/components/landing/Leaderboard";
+import { Courses } from "@/components/landing/Courses";
+import { Challenges } from "@/components/landing/Challenges";
+import { Rewards } from "@/components/landing/Rewards";
+import { Testimonials } from "@/components/landing/Testimonials";
+import { FAQ } from "@/components/landing/FAQ";
+import { HelpCenter } from "@/components/landing/HelpCenter";
+import { AIAssistant } from "@/components/landing/AIAssistant";
+import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Cartory Reseller Hub — Bangladesh's #1 Dropshipping Platform" },
+      { name: "description", content: "Join 12,000+ Bangladeshi resellers. Source winning products, set your prices, earn unlimited profit + 3% bonus commission. Zero inventory, daily payouts." },
+      { property: "og:title", content: "Cartory Reseller Hub" },
+      { property: "og:description", content: "Bangladesh's premium reseller & dropshipping platform." },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <Hero />
+        <TrustBar />
+        <Products />
+        <Leaderboard />
+        <Courses />
+        <Challenges />
+        <Rewards />
+        <Testimonials />
+        <FAQ />
+        <HelpCenter />
+      </main>
+      <Footer />
+      <AIAssistant />
     </div>
   );
 }
