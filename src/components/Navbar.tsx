@@ -60,14 +60,14 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-2">
             <Button variant="ghost" size="sm" asChild>
-              <a href="#login">Login</a>
+              <Link to="/login">Login</Link>
             </Button>
             <Button
               size="sm"
               asChild
               className="bg-gradient-primary hover:opacity-95 text-primary-foreground shadow-glow"
             >
-              <a href="#register">Become a Reseller</a>
+              <Link to="/login">Become a Reseller</Link>
             </Button>
           </div>
 
@@ -95,14 +95,14 @@ export function Navbar() {
               ))}
               <div className="flex gap-2 mt-2 pt-2 border-t">
                 <Button variant="outline" size="sm" className="flex-1" asChild>
-                  <a href="#login">Login</a>
+                  <Link to="/login" onClick={() => setOpen(false)}>Login</Link>
                 </Button>
                 <Button
                   size="sm"
                   className="flex-1 bg-gradient-primary text-primary-foreground"
                   asChild
                 >
-                  <a href="#register">Join</a>
+                  <Link to="/login" onClick={() => setOpen(false)}>Join</Link>
                 </Button>
               </div>
             </nav>
