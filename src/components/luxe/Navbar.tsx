@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Menu, X, Search, ShoppingBag, User } from "lucide-react";
 
 const links = [
-  { href: "#collections", label: "Collections" },
-  { href: "#new", label: "New In" },
-  { href: "#bento", label: "Editorial" },
-  { href: "#trending", label: "Trending" },
-  { href: "#brands", label: "Houses" },
-  { href: "#journal", label: "Journal" },
+  { href: "#why", label: "Why Cartory" },
+  { href: "#leaderboard", label: "Leaderboard" },
+  { href: "#rewards", label: "Rewards" },
+  { href: "#academy", label: "Academy" },
+  { href: "#stories", label: "Stories" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
@@ -29,11 +29,11 @@ export function Navbar() {
         <div className="mx-auto max-w-7xl px-4 h-8 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground">
           <span className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse-gold" />
-            Worldwide Express · Carbon-neutral
+            Reseller OS · Built for Bangladesh
           </span>
           <span className="flex items-center gap-6">
-            <span>EN / USD</span>
-            <span>Concierge · 24/7</span>
+            <span>EN / BN · ৳ BDT</span>
+            <span>Support · 24/7</span>
           </span>
         </div>
       </div>
@@ -47,8 +47,8 @@ export function Navbar() {
               </div>
             </div>
             <div className="leading-tight">
-              <div className="font-serif text-lg tracking-tight">Lumière</div>
-              <div className="eyebrow mt-0.5">Maison · 01</div>
+              <div className="font-serif text-lg tracking-tight">Cartory</div>
+              <div className="eyebrow mt-0.5">Dropship · OS</div>
             </div>
           </Link>
 
@@ -74,7 +74,7 @@ export function Navbar() {
             </button>
             <Link to="/login"
               className="hidden md:inline-flex ml-3 h-10 items-center rounded-full px-5 text-[11px] font-mono uppercase tracking-[0.25em] hybrid-gradient text-[var(--obsidian)] glow-neon">
-              Reserve
+              Join Now
             </Link>
             <button onClick={() => setOpen(v => !v)} aria-label="Menu"
               className="lg:hidden h-10 w-10 grid place-items-center rounded-full hover:bg-secondary/60">
@@ -94,7 +94,7 @@ export function Navbar() {
               ))}
               <Link to="/login" onClick={() => setOpen(false)}
                 className="mt-4 inline-flex h-12 items-center justify-center rounded-full hybrid-gradient text-[var(--obsidian)] font-mono uppercase tracking-[0.25em] text-xs">
-                Reserve Access
+                Join Now
               </Link>
             </nav>
           </div>
