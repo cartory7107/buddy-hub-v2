@@ -14,16 +14,208 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      products: {
+        Row: {
+          category: string | null
+          cost_price: number
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          stock: number
+          suggested_price: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          cost_price: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          stock?: number
+          suggested_price: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          cost_price?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          stock?: number
+          suggested_price?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          mobile: string | null
+          nid_image_path: string | null
+          telegram: string | null
+          total_orders: number
+          total_profit: number
+          updated_at: string
+          user_id: string
+          verification_note: string | null
+          verification_status: Database["public"]["Enums"]["verification_status"]
+          verification_submitted_at: string | null
+          whatsapp: string | null
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          mobile?: string | null
+          nid_image_path?: string | null
+          telegram?: string | null
+          total_orders?: number
+          total_profit?: number
+          updated_at?: string
+          user_id: string
+          verification_note?: string | null
+          verification_status?: Database["public"]["Enums"]["verification_status"]
+          verification_submitted_at?: string | null
+          whatsapp?: string | null
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          mobile?: string | null
+          nid_image_path?: string | null
+          telegram?: string | null
+          total_orders?: number
+          total_profit?: number
+          updated_at?: string
+          user_id?: string
+          verification_note?: string | null
+          verification_status?: Database["public"]["Enums"]["verification_status"]
+          verification_submitted_at?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
+      reseller_orders: {
+        Row: {
+          cost_price: number
+          created_at: string
+          customer_address: string
+          customer_name: string
+          customer_phone: string
+          id: string
+          note: string | null
+          product_id: string
+          profit: number
+          quantity: number
+          reseller_id: string
+          selling_price: number
+          status: Database["public"]["Enums"]["order_status"]
+          updated_at: string
+        }
+        Insert: {
+          cost_price: number
+          created_at?: string
+          customer_address: string
+          customer_name: string
+          customer_phone: string
+          id?: string
+          note?: string | null
+          product_id: string
+          profit: number
+          quantity?: number
+          reseller_id: string
+          selling_price: number
+          status?: Database["public"]["Enums"]["order_status"]
+          updated_at?: string
+        }
+        Update: {
+          cost_price?: number
+          created_at?: string
+          customer_address?: string
+          customer_name?: string
+          customer_phone?: string
+          id?: string
+          note?: string | null
+          product_id?: string
+          profit?: number
+          quantity?: number
+          reseller_id?: string
+          selling_price?: number
+          status?: Database["public"]["Enums"]["order_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reseller_orders_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_approved_reseller: { Args: { _uid: string }; Returns: boolean }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "reseller"
+      order_status:
+        | "pending"
+        | "confirmed"
+        | "shipped"
+        | "delivered"
+        | "cancelled"
+      verification_status: "unsubmitted" | "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +342,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "reseller"],
+      order_status: [
+        "pending",
+        "confirmed",
+        "shipped",
+        "delivered",
+        "cancelled",
+      ],
+      verification_status: ["unsubmitted", "pending", "approved", "rejected"],
+    },
   },
 } as const
