@@ -188,7 +188,7 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
             <span className="grid place-items-center h-6 w-6 rounded-full hybrid-gradient text-[var(--obsidian)]">
               <PlayCircle className="h-3.5 w-3.5" strokeWidth={2.6} />
             </span>
-            {t.yes.replace(/[,،].*$/, "")} · {t.touring}
+            {t.replay}
           </button>
           <button
             onClick={() => setStage("lang")}
