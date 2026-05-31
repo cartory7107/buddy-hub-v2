@@ -47,7 +47,7 @@ export function Logo({
   );
   if (!href) return content;
   return (
-    <Link to={href} aria-label="Cartory home" className="inline-flex items-center">
+    <Link to={href as "/"} aria-label="Cartory home" className="inline-flex items-center">
       {content}
     </Link>
   );
