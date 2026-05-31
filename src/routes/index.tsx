@@ -1,25 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Navbar } from "@/components/Navbar";
-import { TrustBar } from "@/components/landing/TrustBar";
-import { Hero } from "@/components/landing/Hero";
-import { Products } from "@/components/landing/Products";
-import { Leaderboard } from "@/components/landing/Leaderboard";
-import { Courses } from "@/components/landing/Courses";
-import { Challenges } from "@/components/landing/Challenges";
-import { Rewards } from "@/components/landing/Rewards";
-import { Testimonials } from "@/components/landing/Testimonials";
-import { FAQ } from "@/components/landing/FAQ";
-import { HelpCenter } from "@/components/landing/HelpCenter";
-import { AIAssistant } from "@/components/landing/AIAssistant";
-import { Footer } from "@/components/landing/Footer";
+import { Navbar } from "@/components/luxe/Navbar";
+import { Hero } from "@/components/luxe/Hero";
+import { Marquee } from "@/components/luxe/Marquee";
+import { Categories } from "@/components/luxe/Categories";
+import { Products } from "@/components/luxe/Products";
+import { Bento } from "@/components/luxe/Bento";
+import { FlashSale } from "@/components/luxe/FlashSale";
+import { Brands } from "@/components/luxe/Brands";
+import { Reviews } from "@/components/luxe/Reviews";
+import { Stats } from "@/components/luxe/Stats";
+import { Newsletter } from "@/components/luxe/Newsletter";
+import { Footer } from "@/components/luxe/Footer";
+import { AIOrb } from "@/components/luxe/AIOrb";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cartory Reseller Hub — Bangladesh's #1 Dropshipping Platform" },
-      { name: "description", content: "Join 12,000+ Bangladeshi resellers. Source winning products, set your prices, earn unlimited profit + 3% bonus commission. Zero inventory, daily payouts." },
-      { property: "og:title", content: "Cartory Reseller Hub" },
-      { property: "og:description", content: "Bangladesh's premium reseller & dropshipping platform." },
+      { title: "Lumière — A Members-only Archive of Slow-made Objects" },
+      { name: "description", content: "Sixty pieces. Six houses. A cinematic, members-only archive of fragrance, atelier work and slow-made objects — released six times a year." },
+      { property: "og:title", content: "Lumière · Maison 01" },
+      { property: "og:description", content: "Cinematic, members-only archive of slow-made luxury objects." },
     ],
   }),
   component: Index,
@@ -27,22 +27,22 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
         <Hero />
-        <TrustBar />
+        <Marquee />
+        <Categories />
         <Products />
-        <Leaderboard />
-        <Courses />
-        <Challenges />
-        <Rewards />
-        <Testimonials />
-        <FAQ />
-        <HelpCenter />
+        <Bento />
+        <FlashSale />
+        <Brands />
+        <Reviews />
+        <Stats />
+        <Newsletter />
       </main>
       <Footer />
-      <AIAssistant />
+      <AIOrb />
     </div>
   );
 }
