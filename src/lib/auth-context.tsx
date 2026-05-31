@@ -13,6 +13,7 @@ type Profile = {
   whatsapp: string | null;
   telegram: string | null;
   verification_status: "unsubmitted" | "pending" | "approved" | "rejected";
+  verification_note: string | null;
   total_orders: number;
   total_profit: number;
 };
