@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AuthProvider } from "@/lib/auth-context";
 
 function NotFoundComponent() {
   return (
@@ -77,16 +78,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Cartory Pro is a premium SaaS platform for Cartory resellers and dropshippers in Bangladesh." },
+      { title: "Cartory Dropship — The Operating System for Modern Resellers" },
+      { name: "description", content: "Cartory Dropship is the operating system for modern resellers in Bangladesh. Build an online business with verified suppliers, profit tools, training, leaderboards and rewards." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Cartory Pro is a premium SaaS platform for Cartory resellers and dropshippers in Bangladesh." },
+      { property: "og:title", content: "Cartory Dropship · Reseller OS" },
+      { property: "og:description", content: "Build an online reselling business with Cartory Dropship — verified products, profit tools, training and rewards." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Cartory Pro is a premium SaaS platform for Cartory resellers and dropshippers in Bangladesh." },
+      { name: "twitter:title", content: "Cartory Dropship · Reseller OS" },
+      { name: "twitter:description", content: "Build an online reselling business with Cartory Dropship." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9cf450e0-f748-45c4-a125-d99a848b30a8/id-preview-feb06c93--c531158f-94a4-4b12-8284-acb2732aae6c.lovable.app-1780145820773.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9cf450e0-f748-45c4-a125-d99a848b30a8/id-preview-feb06c93--c531158f-94a4-4b12-8284-acb2732aae6c.lovable.app-1780145820773.png" },
     ],
@@ -128,8 +129,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
