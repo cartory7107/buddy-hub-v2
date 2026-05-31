@@ -5,6 +5,7 @@ import {
   GraduationCap, Megaphone, LogOut, Menu, X, ShieldCheck
 } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
+import { Logo } from "@/components/brand/Logo";
 
 const nav = [
   { to: "/dashboard", label: "Command Center", icon: LayoutDashboard },
@@ -38,12 +39,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       <div className="lg:grid lg:grid-cols-[260px_1fr]">
         <aside className={`fixed inset-y-0 left-0 z-40 w-[260px] glass-dark border-r border-border transition-transform lg:static lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="p-6 flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="h-8 w-8 rounded-full hybrid-gradient grid place-items-center">
-                <div className="h-[26px] w-[26px] rounded-full bg-background grid place-items-center font-serif italic text-sm hybrid-text">C</div>
-              </div>
-              <div className="font-serif text-base leading-none">Cartory<span className="text-muted-foreground"> · Dropship</span></div>
-            </Link>
+            <Logo size={36} />
             <button className="lg:hidden h-8 w-8 grid place-items-center" onClick={() => setOpen(false)}><X className="h-4 w-4" /></button>
           </div>
 
@@ -72,10 +68,10 @@ export function DashboardShell({ children }: { children: ReactNode }) {
         </aside>
 
         <div className="min-w-0">
-          <header className="lg:hidden sticky top-0 z-30 glass-dark border-b border-border px-4 h-14 flex items-center justify-between">
-            <button onClick={() => setOpen(true)} className="h-9 w-9 grid place-items-center rounded-full hover:bg-secondary/60"><Menu className="h-4 w-4" /></button>
-            <div className="font-serif text-base">Cartory Dropship</div>
-            <div className="w-9" />
+          <header className="lg:hidden sticky top-0 z-30 glass-dark border-b border-border px-4 h-16 flex items-center justify-between">
+            <button onClick={() => setOpen(true)} className="h-10 w-10 grid place-items-center rounded-full hover:bg-secondary/60"><Menu className="h-5 w-5" /></button>
+            <Logo size={32} showWordmark={false} href={null} />
+            <div className="w-10" />
           </header>
           <main className="p-4 md:p-8 max-w-7xl mx-auto">
             {children}

@@ -51,9 +51,11 @@ function Dashboard() {
     <div className="space-y-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="eyebrow text-[var(--neon-soft)]">Command Center</div>
-          <h1 className="font-serif text-4xl md:text-5xl mt-2">Welcome back, <em className="italic hybrid-text">{profile?.full_name?.split(" ")[0] || "Reseller"}</em>.</h1>
-          <p className="text-muted-foreground mt-2 text-sm">Your reseller business at a glance.</p>
+          <div className="text-xs font-bold uppercase tracking-wider text-[var(--neon-soft)]">Command Center</div>
+          <h1 className="font-display font-extrabold text-white text-4xl md:text-5xl mt-2 tracking-tight">
+            Welcome back, <span className="hybrid-text">{profile?.full_name?.split(" ")[0] || "Reseller"}</span>.
+          </h1>
+          <p className="text-[#E5E7EB] mt-3 text-base">Your reseller business at a glance.</p>
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { lovable } from "@/integrations/lovable";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
+import { Logo } from "@/components/brand/Logo";
 
 export const Route = createFileRoute("/register")({
   head: () => ({ meta: [{ title: "Join Cartory Dropship — Build your reseller business" }] }),
@@ -53,11 +54,14 @@ function RegisterPage() {
   return (
     <div className="min-h-screen luxe-gradient flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
-        <Link to="/" className="eyebrow text-muted-foreground hover:text-foreground">← Back home</Link>
-        <div className="mt-6 glass-dark rounded-3xl p-8 ring-luxe">
-          <div className="eyebrow text-[var(--neon-soft)]">Start in 30 seconds</div>
-          <h1 className="font-serif text-4xl mt-3">Create your <em className="italic hybrid-text">reseller</em> account.</h1>
-          <p className="mt-2 text-sm text-muted-foreground">No NID needed yet. Just your name to enter the platform.</p>
+        <div className="flex items-center justify-between">
+          <Logo size={44} />
+          <Link to="/" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground">← Home</Link>
+        </div>
+        <div className="mt-8 glass-dark rounded-3xl p-8 ring-luxe">
+          <div className="text-xs font-bold uppercase tracking-wider text-[var(--neon-soft)]">Start in 30 seconds</div>
+          <h1 className="font-display font-extrabold text-white text-4xl mt-3 tracking-tight">Create your <span className="hybrid-text">reseller</span> account.</h1>
+          <p className="mt-2 text-base text-[#E5E7EB]">No NID needed yet. Just your name to get inside.</p>
 
           <button onClick={handleGoogle} disabled={loading}
             className="mt-8 w-full h-12 rounded-full bg-white text-black font-medium inline-flex items-center justify-center gap-3 hover:bg-white/90 transition">

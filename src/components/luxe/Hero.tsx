@@ -1,4 +1,4 @@
-import { ArrowUpRight, TrendingUp, ShieldCheck, Trophy } from "lucide-react";
+import { ArrowUpRight, TrendingUp, ShieldCheck, Trophy, CheckCircle2, Users, Zap, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import img1 from "@/assets/luxe-1.jpg";
 import img2 from "@/assets/luxe-2.jpg";
@@ -29,51 +29,54 @@ function ScrollColumn({ images, reverse }: { images: string[]; reverse?: boolean
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden luxe-gradient pt-32 md:pt-40 pb-20">
+    <section id="home" className="relative overflow-hidden luxe-gradient pt-32 md:pt-40 pb-16">
       <div className="absolute -top-32 -left-32 h-[480px] w-[480px] rounded-full bg-[var(--neon)]/25 blur-[140px]" aria-hidden />
       <div className="absolute -bottom-32 -right-32 h-[480px] w-[480px] rounded-full bg-[var(--gold)]/20 blur-[140px]" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-4 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
         <div className="animate-fade-up">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="inline-flex items-center gap-3 mb-8 rounded-full glass-dark ring-luxe px-4 py-2">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--neon)] opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--neon)]" />
             </span>
-            <span className="eyebrow">The Operating System for Modern Resellers · BD</span>
+            <span className="text-xs font-semibold tracking-wide text-foreground/90">
+              Bangladesh's #1 Reseller Operating System
+            </span>
           </div>
 
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-balance">
-            Build an online <em className="italic hybrid-text">reselling business</em>, not just another side hustle.
+          <h1 className="font-display font-extrabold text-white text-[42px] sm:text-[56px] lg:text-[72px] leading-[1.02] tracking-tight text-balance">
+            Build Your Business <br className="hidden sm:block" />
+            With <span className="hybrid-text">Cartory</span>
           </h1>
 
-          <p className="mt-8 max-w-xl text-pretty text-base md:text-lg text-muted-foreground">
-            Cartory Dropship gives you verified products, profit tools, training, leaderboards and rewards — the full operating system to grow a real business from your phone.
+          <p className="mt-6 max-w-xl text-pretty text-lg md:text-xl text-[#E5E7EB] font-medium leading-relaxed">
+            Verified products, profit tools, training and weekly payouts — everything you need to grow a real reselling business from your phone.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
             <Link to="/register"
-              className="group inline-flex h-12 items-center gap-2 rounded-full pl-6 pr-2 text-xs font-mono uppercase tracking-[0.25em] hybrid-gradient text-[var(--obsidian)] glow-neon">
-              Start free in 30s
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--obsidian)] text-[var(--platinum)] transition-transform group-hover:rotate-45">
-                <ArrowUpRight className="h-4 w-4" />
+              className="group inline-flex h-14 items-center gap-3 rounded-full pl-7 pr-2 text-base font-bold font-display hybrid-gradient text-[var(--obsidian)] glow-neon hover:scale-[1.02] active:scale-[0.99] transition-transform">
+              Start Your Journey
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-[var(--obsidian)] text-white transition-transform group-hover:rotate-45">
+                <ArrowUpRight className="h-5 w-5" />
               </span>
             </Link>
             <Link to="/login"
-              className="inline-flex h-12 items-center rounded-full border border-border px-6 text-xs font-mono uppercase tracking-[0.25em] text-foreground hover:bg-secondary/60 transition-colors">
-              Reseller sign in
+              className="inline-flex h-14 items-center rounded-full border border-white/20 bg-white/5 backdrop-blur px-7 text-base font-semibold font-display text-white hover:bg-white/10 transition-colors">
+              Sign In
             </Link>
           </div>
 
-          <div className="mt-14 grid grid-cols-3 gap-6 max-w-lg">
+          <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
             {[
               { v: "12K+", l: "Active resellers" },
               { v: "৳2Cr", l: "Profit paid out" },
               { v: "24h", l: "Verification" },
             ].map((s, i) => (
               <div key={s.l} className={i > 0 ? "pl-6 border-l border-border" : ""}>
-                <div className="font-serif text-4xl md:text-5xl gold-text">{s.v}</div>
-                <div className="eyebrow mt-2">{s.l}</div>
+                <div className="font-display font-black text-3xl md:text-4xl gold-text">{s.v}</div>
+                <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-[#C7CBD1]">{s.l}</div>
               </div>
             ))}
           </div>
@@ -88,21 +91,32 @@ export function Hero() {
           </div>
 
           <div className="absolute top-10 -left-4 md:-left-8 glass-dark rounded-2xl px-4 py-3 animate-float ring-luxe">
-            <div className="flex items-center gap-2"><TrendingUp className="h-3.5 w-3.5 text-[var(--neon-soft)]" /><div className="eyebrow text-[var(--neon-soft)]">Today · Live</div></div>
-            <div className="font-serif text-2xl mt-1">+৳8,420 profit</div>
+            <div className="flex items-center gap-2"><TrendingUp className="h-3.5 w-3.5 text-[var(--neon-soft)]" /><div className="text-[10px] font-bold uppercase tracking-wider text-[var(--neon-soft)]">Today · Live</div></div>
+            <div className="font-display font-extrabold text-2xl mt-1 text-white">+৳8,420 profit</div>
           </div>
           <div className="absolute bottom-12 -right-4 md:-right-8 glass-dark rounded-2xl px-4 py-3 animate-float ring-luxe" style={{ animationDelay: "1.5s" }}>
-            <div className="flex items-center gap-2"><Trophy className="h-3.5 w-3.5 text-[var(--gold)]" /><div className="eyebrow text-[var(--gold)]">Rank #003</div></div>
-            <div className="font-serif text-2xl mt-1">Sadia R.</div>
+            <div className="flex items-center gap-2"><Trophy className="h-3.5 w-3.5 text-[var(--gold)]" /><div className="text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">Rank #003</div></div>
+            <div className="font-display font-extrabold text-2xl mt-1 text-white">Sadia R.</div>
           </div>
         </div>
       </div>
 
-      {/* trust strip */}
-      <div className="relative mx-auto max-w-7xl px-4 mt-20">
-        <div className="glass-dark rounded-full px-6 py-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 ring-luxe">
-          {["Verified suppliers", "Same-day dispatch", "Cash-on-delivery", "1:1 mentorship", "Weekly payouts"].map(t => (
-            <span key={t} className="eyebrow">{t}</span>
+      {/* Trust bar */}
+      <div className="relative mx-auto max-w-7xl px-4 mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {[
+            { icon: ShieldCheck, t: "Secure Platform" },
+            { icon: CheckCircle2, t: "Verified Products" },
+            { icon: Zap, t: "Fast Support" },
+            { icon: Users, t: "Growing Community" },
+            { icon: Sparkles, t: "Real Opportunity" },
+          ].map(({ icon: Icon, t }) => (
+            <div key={t} className="glass-dark ring-luxe rounded-2xl px-4 py-4 flex items-center gap-3">
+              <div className="h-9 w-9 rounded-full bg-[var(--neon)]/15 grid place-items-center shrink-0">
+                <Icon className="h-4 w-4 text-[var(--neon-soft)]" />
+              </div>
+              <span className="font-display font-semibold text-sm text-white leading-tight">{t}</span>
+            </div>
           ))}
         </div>
       </div>

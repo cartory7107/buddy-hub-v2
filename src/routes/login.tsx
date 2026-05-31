@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { lovable } from "@/integrations/lovable";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
+import { Logo } from "@/components/brand/Logo";
 
 export const Route = createFileRoute("/login")({
   head: () => ({ meta: [{ title: "Sign in — Cartory Dropship" }] }),
@@ -43,11 +44,14 @@ function LoginPage() {
   return (
     <div className="min-h-screen luxe-gradient flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
-        <Link to="/" className="eyebrow text-muted-foreground hover:text-foreground">← Back home</Link>
-        <div className="mt-6 glass-dark rounded-3xl p-8 ring-luxe">
-          <div className="eyebrow text-[var(--gold)]">Reseller access</div>
-          <h1 className="font-serif text-4xl mt-3">Welcome back.</h1>
-          <p className="mt-2 text-sm text-muted-foreground">Sign in to your Cartory Dropship command center.</p>
+        <div className="flex items-center justify-between">
+          <Logo size={44} />
+          <Link to="/" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground">← Home</Link>
+        </div>
+        <div className="mt-8 glass-dark rounded-3xl p-8 ring-luxe">
+          <div className="text-xs font-bold uppercase tracking-wider text-[var(--gold)]">Reseller access</div>
+          <h1 className="font-display font-extrabold text-white text-4xl mt-3 tracking-tight">Welcome back.</h1>
+          <p className="mt-2 text-base text-[#E5E7EB]">Sign in to your Cartory command center.</p>
 
           <button onClick={handleGoogle} disabled={loading}
             className="mt-8 w-full h-12 rounded-full bg-white text-black font-medium inline-flex items-center justify-center gap-3 hover:bg-white/90 transition">
