@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Globe2, Sparkles, X, ChevronDown, Check } from "lucide-react";
+import { Globe2, Sparkles, X, ChevronDown, Check, PlayCircle, Languages } from "lucide-react";
 import { LANGUAGES, T, type LangCode } from "./translations";
 
 const LANG_KEY = "cartory_lang";
@@ -175,6 +175,30 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
       {/* SCROLL INDICATOR — always visible after language picked */}
       {stage !== "lang" && (
         <ScrollIndicator sections={sections} hint={t.scrollHint} />
+      )}
+
+      {/* REPLAY PILL — visible after tour is dismissed/finished */}
+      {stage === "done" && lang && (
+        <div className="fixed top-20 right-4 md:right-6 z-[70] flex items-center gap-2 animate-fade-up">
+          <button
+            onClick={runTour}
+            className="group inline-flex items-center gap-2 rounded-full glass-dark ring-luxe pl-3 pr-4 h-10 text-xs font-display font-semibold text-white hover:bg-white/10 transition-colors"
+            aria-label="Replay tour"
+          >
+            <span className="grid place-items-center h-6 w-6 rounded-full hybrid-gradient text-[var(--obsidian)]">
+              <PlayCircle className="h-3.5 w-3.5" strokeWidth={2.6} />
+            </span>
+            {t.replay}
+          </button>
+          <button
+            onClick={() => setStage("lang")}
+            className="inline-flex items-center justify-center rounded-full glass-dark ring-luxe h-10 w-10 text-white hover:bg-white/10 transition-colors"
+            aria-label="Change language"
+            title={t.chooseLang}
+          >
+            <Languages className="h-4 w-4" />
+          </button>
+        </div>
       )}
     </>
   );
