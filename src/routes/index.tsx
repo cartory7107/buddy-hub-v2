@@ -8,6 +8,8 @@ import { Stats } from "@/components/luxe/Stats";
 import { Footer } from "@/components/luxe/Footer";
 import { AIOrb } from "@/components/luxe/AIOrb";
 import { ResellerSections } from "@/components/reseller/ResellerSections";
+import { Onboarding, type TourSection } from "@/components/onboarding/Onboarding";
+import { useAuth } from "@/lib/auth-context";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,19 +24,29 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { user, loading } = useAuth();
+  const sections: TourSection[] = [
+    { id: "tour-hero", label: "Welcome to Cartory" },
+    { id: "tour-marquee", label: "Trusted Brands" },
+    { id: "tour-journey", label: "Your 6-Step Journey" },
+    { id: "tour-reseller", label: "Reseller Tools" },
+    { id: "tour-reviews", label: "What Resellers Say" },
+    { id: "tour-stats", label: "Platform Growth" },
+  ];
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <Hero />
-        <Marquee />
-        <Journey />
-        <ResellerSections />
-        <Reviews />
-        <Stats />
+        <div id="tour-hero"><Hero /></div>
+        <div id="tour-marquee"><Marquee /></div>
+        <div id="tour-journey"><Journey /></div>
+        <div id="tour-reseller"><ResellerSections /></div>
+        <div id="tour-reviews"><Reviews /></div>
+        <div id="tour-stats"><Stats /></div>
       </main>
       <Footer />
       <AIOrb />
+      {!loading && !user && <Onboarding sections={sections} />}
     </div>
   );
 }
