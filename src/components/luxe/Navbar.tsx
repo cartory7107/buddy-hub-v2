@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Search, ShoppingBag, User } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/brand/Logo";
 
 const links = [
   { href: "#why", label: "Why Cartory" },
@@ -24,60 +25,30 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
-      {/* utility strip */}
-      <div className="hidden md:block border-b border-border/40 bg-background/40 backdrop-blur">
-        <div className="mx-auto max-w-7xl px-4 h-8 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.28em] text-muted-foreground">
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse-gold" />
-            Reseller OS · Built for Bangladesh
-          </span>
-          <span className="flex items-center gap-6">
-            <span>EN / BN · ৳ BDT</span>
-            <span>Support · 24/7</span>
-          </span>
-        </div>
-      </div>
-
       <div className={`transition-all duration-500 ${scrolled ? "glass-dark border-b border-border/60" : "bg-transparent"}`}>
         <div className="mx-auto max-w-7xl px-4 h-16 md:h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="relative h-9 w-9 rounded-full hybrid-gradient grid place-items-center">
-              <div className="absolute inset-0.5 rounded-full bg-background grid place-items-center">
-                <span className="font-serif italic text-lg leading-none hybrid-text">L</span>
-              </div>
-            </div>
-            <div className="leading-tight">
-              <div className="font-serif text-lg tracking-tight">Cartory</div>
-              <div className="eyebrow mt-0.5">Dropship · OS</div>
-            </div>
-          </Link>
+          <Logo size={40} />
 
           <nav className="hidden lg:flex items-center gap-1">
             {links.map((l) => (
               <a key={l.href} href={l.href}
-                className="px-3 py-2 text-[11px] font-mono uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground transition-colors">
+                className="px-4 py-2 text-sm font-display font-semibold text-[#E5E7EB] hover:text-white transition-colors">
                 {l.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-1">
-            <button aria-label="Search" className="h-10 w-10 grid place-items-center rounded-full hover:bg-secondary/60 transition-colors">
-              <Search className="h-4 w-4" />
-            </button>
-            <Link to="/login" aria-label="Account" className="h-10 w-10 hidden md:grid place-items-center rounded-full hover:bg-secondary/60 transition-colors">
-              <User className="h-4 w-4" />
-            </Link>
-            <button aria-label="Bag" className="h-10 w-10 grid place-items-center rounded-full hover:bg-secondary/60 transition-colors relative">
-              <ShoppingBag className="h-4 w-4" />
-              <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-            </button>
+          <div className="flex items-center gap-2">
             <Link to="/login"
-              className="hidden md:inline-flex ml-3 h-10 items-center rounded-full px-5 text-[11px] font-mono uppercase tracking-[0.25em] hybrid-gradient text-[var(--obsidian)] glow-neon">
-              Join Now
+              className="hidden md:inline-flex h-11 items-center rounded-full border border-white/20 bg-white/5 px-5 text-sm font-display font-semibold text-white hover:bg-white/10 transition-colors">
+              Login
+            </Link>
+            <Link to="/register"
+              className="hidden md:inline-flex h-11 items-center rounded-full px-6 text-sm font-display font-bold hybrid-gradient text-[var(--obsidian)] glow-neon hover:scale-[1.02] transition-transform">
+              Register
             </Link>
             <button onClick={() => setOpen(v => !v)} aria-label="Menu"
-              className="lg:hidden h-10 w-10 grid place-items-center rounded-full hover:bg-secondary/60">
+              className="lg:hidden h-11 w-11 grid place-items-center rounded-full bg-white/5 border border-white/15">
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -88,13 +59,17 @@ export function Navbar() {
             <nav className="mx-auto max-w-7xl px-4 py-6 grid gap-1">
               {links.map(l => (
                 <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-                  className="px-3 py-3 font-serif text-2xl border-b border-border/40">
+                  className="px-3 py-3 font-display font-bold text-2xl text-white border-b border-border/40">
                   {l.label}
                 </a>
               ))}
               <Link to="/login" onClick={() => setOpen(false)}
-                className="mt-4 inline-flex h-12 items-center justify-center rounded-full hybrid-gradient text-[var(--obsidian)] font-mono uppercase tracking-[0.25em] text-xs">
-                Join Now
+                className="mt-4 inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white font-display font-semibold text-base">
+                Login
+              </Link>
+              <Link to="/register" onClick={() => setOpen(false)}
+                className="mt-2 inline-flex h-12 items-center justify-center rounded-full hybrid-gradient text-[var(--obsidian)] font-display font-bold text-base">
+                Register Now
               </Link>
             </nav>
           </div>
