@@ -5,7 +5,7 @@ type Props = {
   size?: number;
   showWordmark?: boolean;
   tagline?: string;
-  href?: string;
+  href?: string | null;
   className?: string;
 };
 
