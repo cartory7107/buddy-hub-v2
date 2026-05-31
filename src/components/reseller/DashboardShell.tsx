@@ -70,7 +70,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
         <div className="min-w-0">
           <header className="lg:hidden sticky top-0 z-30 glass-dark border-b border-border px-4 h-16 flex items-center justify-between">
             <button onClick={() => setOpen(true)} className="h-10 w-10 grid place-items-center rounded-full hover:bg-secondary/60"><Menu className="h-5 w-5" /></button>
-            <Logo size={32} showWordmark={false} href={undefined} />
+            <Logo size={32} showWordmark={false} href={null} />
             <div className="w-10" />
           </header>
           <main className="p-4 md:p-8 max-w-7xl mx-auto">
