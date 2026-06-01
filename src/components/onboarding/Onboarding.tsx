@@ -44,18 +44,22 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
   const runTour = async () => {
     setStage("running");
     stopRef.current = false;
-    const STEP_MS = Math.max(4000, Math.floor(60000 / Math.max(sections.length, 1)));
+    // Quick rhythmic highlight: scroll → pulse ~1s → move on.
+    const SCROLL_SETTLE_MS = 450; // let smooth-scroll settle
+    const PULSE_MS = 1000;        // single ~1s glow pulse
     for (let i = 0; i < sections.length; i++) {
       if (stopRef.current) break;
       setActiveIdx(i);
       const el = document.getElementById(sections[i].id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "center" });
+        await wait(SCROLL_SETTLE_MS);
+        if (stopRef.current) break;
         el.classList.add("tour-active");
-        await wait(STEP_MS);
+        await wait(PULSE_MS);
         el.classList.remove("tour-active");
       } else {
-        await wait(600);
+        await wait(300);
       }
     }
     // cleanup
