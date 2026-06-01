@@ -15,7 +15,7 @@ export function NextArrow({ targetId, label = "Click here", up = false }: Props)
   };
 
   return (
-    <div className="relative z-30 flex justify-center -mt-4 mb-10 md:mb-14 pointer-events-none">
+    <div className="relative z-30 flex justify-center pt-8 md:pt-10 pb-2 pointer-events-none">
       <button
         onClick={onClick}
         aria-label={label}
