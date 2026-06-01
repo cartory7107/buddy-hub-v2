@@ -5,6 +5,26 @@ import { LANGUAGES, T, type LangCode } from "./translations";
 const LANG_KEY = "cartory_lang";
 const TOUR_KEY = "cartory_tour_done";
 
+/** Map our internal LangCode to the language tag Google Translate expects. */
+const GOOGLE_LANG: Record<string, string> = {
+  en: "en", bn: "bn", hi: "hi", ar: "ar", ur: "ur", es: "es",
+  it: "it", fr: "fr", pt: "pt", de: "de", zh: "zh-CN", id: "id",
+};
+
+/**
+ * Set the cookie Google Translate reads to decide which language to render.
+ * Setting it on both `domain=.host` and host-only covers subdomains + apex.
+ */
+function setGoogTransCookie(code: string) {
+  const value = code === "en" ? "/en/en" : `/en/${GOOGLE_LANG[code] ?? code}`;
+  const host = window.location.hostname;
+  const parts = host.split(".");
+  const domain = parts.length > 1 ? "." + parts.slice(-2).join(".") : host;
+  const exp = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+  document.cookie = `googtrans=${value}; expires=${exp}; path=/`;
+  document.cookie = `googtrans=${value}; expires=${exp}; path=/; domain=${domain}`;
+}
+
 export type TourSection = { id: string; label: string };
 
 export function Onboarding({ sections }: { sections: TourSection[] }) {
@@ -25,6 +45,8 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
         setLang(saved);
         setStage("tour");
       }
+      // Re-assert the Google Translate cookie on every visit so the choice persists.
+      if (saved) setGoogTransCookie(saved);
     } catch {}
   }, []);
 
@@ -32,6 +54,13 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
 
   const pickLang = (code: LangCode) => {
     try { localStorage.setItem(LANG_KEY, code); } catch {}
+    setGoogTransCookie(code);
+    // Reload so Google Translate picks up the new cookie and translates the entire DOM.
+    // The tour stage will resume after reload because localStorage has the lang but not TOUR_KEY.
+    if (code !== (lang ?? "")) {
+      window.location.reload();
+      return;
+    }
     setLang(code);
     setStage("tour");
   };
