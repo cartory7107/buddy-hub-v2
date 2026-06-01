@@ -309,3 +309,13 @@
     animation: none !important;
   }
 }
+
+/* ===== Google Website Translator: hide banner/toolbar so UI stays clean ===== */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget,
+#goog-gt-tt,
+.goog-te-balloon-frame { display: none !important; }
+.skiptranslate > iframe { display: none !important; }
+body { top: 0 !important; }
+/* Prevent Google from underlining/highlighting translated text on hover */
+font[style*="background-color"] { background: transparent !important; box-shadow: none !important; }

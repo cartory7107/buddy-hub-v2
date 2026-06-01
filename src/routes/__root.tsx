@@ -134,7 +134,43 @@ function RootComponent() {
       <AuthProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
+        <GoogleTranslate />
       </AuthProvider>
     </QueryClientProvider>
   );
+}
+
+/**
+ * Hidden Google Website Translator. Translates the entire DOM into the language
+ * stored in the `googtrans` cookie (set by the Onboarding language picker).
+ * Covers every word — static, dynamic, future-added — without manual translation.
+ */
+function GoogleTranslate() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (document.getElementById("google-translate-script")) return;
+
+    (window as any).googleTranslateElementInit = () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const g = (window as any).google;
+      if (!g?.translate?.TranslateElement) return;
+      new g.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "en,bn,hi,ar,ur,es,it,fr,pt,de,zh-CN,id",
+          autoDisplay: false,
+          layout: g.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        "google_translate_element",
+      );
+    };
+
+    const s = document.createElement("script");
+    s.id = "google-translate-script";
+    s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    s.async = true;
+    document.body.appendChild(s);
+  }, []);
+
+  return <div id="google_translate_element" aria-hidden style={{ position: "fixed", left: "-9999px", top: 0, width: 1, height: 1, overflow: "hidden", opacity: 0, pointerEvents: "none" }} />;
 }
