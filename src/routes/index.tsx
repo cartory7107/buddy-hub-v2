@@ -6,7 +6,6 @@ import { Marquee } from "@/components/luxe/Marquee";
 import { Reviews } from "@/components/luxe/Reviews";
 import { Stats } from "@/components/luxe/Stats";
 import { Footer } from "@/components/luxe/Footer";
-import { AIOrb } from "@/components/luxe/AIOrb";
 import { ResellerSections } from "@/components/reseller/ResellerSections";
 import { Onboarding, type TourSection } from "@/components/onboarding/Onboarding";
 import { NextArrow } from "@/components/onboarding/NextArrow";
@@ -40,7 +39,7 @@ function Index() {
       <main>
         <div id="tour-hero" className="relative">
           <div className="absolute inset-x-0 top-16 md:top-20 z-30 pointer-events-none">
-            <NextArrow targetId="tour-marquee" label="See trusted brands" />
+            <NextArrow targetId="tour-marquee" label="Click Here" />
           </div>
           <Hero />
         </div>
@@ -66,7 +65,6 @@ function Index() {
         </div>
       </main>
       <Footer />
-      <AIOrb />
       {!loading && !user && <Onboarding sections={sections} />}
     </div>
   );

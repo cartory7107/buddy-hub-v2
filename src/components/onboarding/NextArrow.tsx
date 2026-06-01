@@ -1,4 +1,5 @@
 import { ChevronDown, ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 type Props = {
   targetId: string;
@@ -8,6 +9,14 @@ type Props = {
 };
 
 export function NextArrow({ targetId, label = "Click here", up = false }: Props) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation on component mount
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const onClick = () => {
     const el = document.getElementById(targetId);
     if (el) {
@@ -28,8 +37,8 @@ export function NextArrow({ targetId, label = "Click here", up = false }: Props)
         aria-label={label}
         className="next-arrow-3d pointer-events-auto group inline-flex items-center gap-3 select-none"
       >
-        {/* Animated "Click here" label */}
-        <span className="next-arrow-label hidden sm:inline-flex items-center gap-2 rounded-full glass-dark ring-luxe px-4 h-10 font-display font-semibold text-white text-xs tracking-wide">
+        {/* Animated CTA label with attention-grabbing effects */}
+        <span className={`next-arrow-label hidden sm:inline-flex items-center gap-2 rounded-full glass-dark ring-luxe px-4 h-10 font-display font-semibold text-white text-xs tracking-wide transition-all duration-500 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"} group-hover:brightness-110 group-hover:shadow-lg group-hover:shadow-[var(--neon)]/30 animate-pulse-subtle`} style={{ animationDuration: "3s" }}>
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--neon)] opacity-75 animate-ping" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--neon)]" />
