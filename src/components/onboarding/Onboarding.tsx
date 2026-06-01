@@ -109,7 +109,7 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
       {/* LANGUAGE MODAL */}
       {stage === "lang" && (
         <Modal>
-          <div className="text-center">
+          <div className="text-center" translate="no">
             <div className="mx-auto h-14 w-14 rounded-2xl hybrid-gradient grid place-items-center text-[var(--obsidian)] shadow-lg">
               <Globe2 className="h-7 w-7" strokeWidth={2.4} />
             </div>
@@ -121,7 +121,7 @@ export function Onboarding({ sections }: { sections: TourSection[] }) {
               Pick the language you're most comfortable with.
             </p>
           </div>
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3" translate="no">
             {LANGUAGES.map((l) => (
               <button
                 key={l.code}
