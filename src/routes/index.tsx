@@ -49,8 +49,8 @@ function Index() {
           <Marquee />
         </div>
         <div id="tour-journey">
-          <NextArrow targetId="tour-reseller" label="Explore reseller tools" />
           <Journey />
+          <NextArrow targetId="tour-reseller" label="Explore reseller tools" />
         </div>
         <div id="tour-reseller">
           <NextArrow targetId="tour-reviews" label="Read reviews" />
