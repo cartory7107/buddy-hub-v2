@@ -10,8 +10,15 @@ type Props = {
 export function NextArrow({ targetId, label = "Click here", up = false }: Props) {
   const onClick = () => {
     const el = document.getElementById(targetId);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    else if (up) window.scrollTo({ top: 0, behavior: "smooth" });
+    if (el) {
+      // Offset so the section's arrow button lands comfortably below the fixed navbar
+      const navOffset = 96; // ~navbar height
+      const extra = 24; // breathing room so arrow sits nicely visible
+      const top = el.getBoundingClientRect().top + window.scrollY - navOffset - extra;
+      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+    } else if (up) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
