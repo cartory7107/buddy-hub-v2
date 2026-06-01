@@ -39,7 +39,6 @@ function Index() {
       <Navbar />
       <main>
         <div id="tour-hero">
-          <NextArrow targetId="tour-marquee" label="See trusted brands" />
           <Hero />
         </div>
         <div id="tour-marquee">
