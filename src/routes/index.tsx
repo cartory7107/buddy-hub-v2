@@ -38,7 +38,10 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <div id="tour-hero">
+        <div id="tour-hero" className="relative">
+          <div className="absolute inset-x-0 top-16 md:top-20 z-30 pointer-events-none">
+            <NextArrow targetId="tour-marquee" label="See trusted brands" />
+          </div>
           <Hero />
         </div>
         <div id="tour-marquee">
