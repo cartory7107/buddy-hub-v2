@@ -9,6 +9,7 @@ import { Footer } from "@/components/luxe/Footer";
 import { AIOrb } from "@/components/luxe/AIOrb";
 import { ResellerSections } from "@/components/reseller/ResellerSections";
 import { Onboarding, type TourSection } from "@/components/onboarding/Onboarding";
+import { NextArrow } from "@/components/onboarding/NextArrow";
 import { useAuth } from "@/lib/auth-context";
 
 export const Route = createFileRoute("/")({
@@ -38,11 +39,17 @@ function Index() {
       <Navbar />
       <main>
         <div id="tour-hero"><Hero /></div>
+        <NextArrow targetId="tour-marquee" label="See trusted brands" />
         <div id="tour-marquee"><Marquee /></div>
+        <NextArrow targetId="tour-journey" label="Start your journey" />
         <div id="tour-journey"><Journey /></div>
+        <NextArrow targetId="tour-reseller" label="Explore reseller tools" />
         <div id="tour-reseller"><ResellerSections /></div>
+        <NextArrow targetId="tour-reviews" label="Read reviews" />
         <div id="tour-reviews"><Reviews /></div>
+        <NextArrow targetId="tour-stats" label="View platform growth" />
         <div id="tour-stats"><Stats /></div>
+        <NextArrow targetId="tour-hero" label="Back to top" up />
       </main>
       <Footer />
       <AIOrb />
