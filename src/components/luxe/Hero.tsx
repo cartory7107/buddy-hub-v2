@@ -140,7 +140,7 @@ export function Hero() {
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
             {[
               { v: "12K+", l: "Active resellers" },
-              { v: "৳2Cr", l: "Profit paid out" },
+              { v: "৳7.5 Lakh", l: "Profit paid out" },
               { v: "24h", l: "Verification" },
             ].map((s, i) => (
               <div key={s.l} className={i > 0 ? "pl-6 border-l border-border" : ""}>
