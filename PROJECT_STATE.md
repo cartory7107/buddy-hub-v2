@@ -1,0 +1,237 @@
+# Project State — Production Baseline
+
+_Last audited: 2026-06-02 (UTC)_
+
+This document records the current working production baseline for the Cartory Dropship / Buddy Hub V2 repository. It is intentionally descriptive only; it does not introduce feature, route, UI, auth, Supabase, or deployment changes.
+
+## Stabilization Scope
+
+- The website is reported as fully working in production.
+- This baseline preserves the current TanStack Start + Nitro + Vercel deployment setup.
+- No code refactor, cleanup, route change, UI change, auth change, Supabase change, or deployment behavior change was made as part of this stabilization task.
+- Future changes should treat the current GitHub `main` production state as the source of truth. In this local checkout, `HEAD` is `6d8169f` on branch `work`, a GitHub merge commit for PR #1: `Replace Lovable Vite wrapper with explicit TanStack Start + Nitro Vite config (fix Vercel output)`.
+- This checkout has no configured Git remote, so the audit could not fetch or compare against a live `origin/main`. The available repository history indicates the current checked-out commit is the production-fix merge baseline.
+
+## What Currently Works
+
+Based on the repository state and user confirmation:
+
+- Production website renders successfully.
+- TanStack Start file-based routing is active under `src/routes/`.
+- The public landing page exists at `/`.
+- Auth routes exist at `/login` and `/register`.
+- Authenticated app routes exist under the `_authenticated` layout, including dashboard, products, orders, courses, challenges, leaderboard, news, onboarding, and rewards pages.
+- Supabase auth/profile integration is present and wired through the shared auth context.
+- Server-side error handling is present in the TanStack Start server entry and request middleware.
+- Nitro is configured to build for Vercel by default.
+- Vite explicitly loads TanStack Start, Nitro, React, Tailwind, and TypeScript path plugins.
+
+## Current Architecture
+
+### Application Framework
+
+- React 19 application using TanStack Start and TanStack Router.
+- TanStack Router file-based routes live in `src/routes/`.
+- `src/routes/__root.tsx` defines the root shell, metadata, providers, error component, not-found component, and root `<Outlet />`.
+- `src/router.tsx` creates the router and wires the generated route tree.
+- `src/routeTree.gen.ts` is generated output and should not be edited manually.
+- `src/start.ts` creates the TanStack Start instance and request middleware.
+- `src/server.ts` is the server entry configured in Vite for TanStack Start.
+
+### UI and Styling
+
+- Global styles are in `src/styles.css`.
+- UI primitives are in `src/components/ui/` and are configured by `components.json`.
+- Brand and marketing UI is organized under `src/components/brand/`, `src/components/luxe/`, `src/components/reseller/`, and `src/components/onboarding/`.
+- Static images are stored in `src/assets/`, `public/`, and `public/optimized/`.
+- Tailwind CSS is wired through `@tailwindcss/vite` in `vite.config.ts`.
+
+### Data, Auth, and Supabase
+
+- Browser Supabase client: `src/integrations/supabase/client.ts`.
+- Server/admin Supabase client: `src/integrations/supabase/client.server.ts`.
+- Server-function auth middleware: `src/integrations/supabase/auth-middleware.ts`.
+- Client auth-attacher middleware: `src/integrations/supabase/auth-attacher.ts`.
+- Shared React auth state: `src/lib/auth-context.tsx`.
+- Supabase database types: `src/integrations/supabase/types.ts`.
+- Supabase local/project config: `supabase/config.toml`.
+- Supabase migrations are stored in `supabase/migrations/`.
+
+### Build and Runtime
+
+- Package manager intent appears to be Bun-oriented because `bunfig.toml` is present and sets a minimum release age for dependency installs.
+- No lockfile is present in this local checkout (`bun.lock`, `package-lock.json`, `pnpm-lock.yaml`, and `yarn.lock` are absent).
+- Build script: `vite build`.
+- Dev script: `vite dev`.
+- Preview script: `vite preview`.
+- Runtime start script: `node .output/server/index.mjs`.
+- Image build script remains listed as `node scripts/optimize-images.js`, but `scripts/optimize-images.js` is not present in the current checkout. Do not assume this script is production-critical without review.
+
+## Current Deployment Method
+
+Production deployment is currently documented by repository configuration as:
+
+1. Vercel-hosted TanStack Start application.
+2. Vite build using the explicit TanStack Start + Nitro plugin stack.
+3. Nitro preset defaults to `vercel` from both `vite.config.ts` and `nitro.config.ts`.
+4. The default production build command is `vite build` through `npm run build`, `bun run build`, or the deployment platform equivalent.
+5. Nitro output is expected under `.output/`, with the runtime entry referenced by `package.json` as `.output/server/index.mjs`.
+
+There is no `vercel.json` in this checkout. Deployment behavior depends on the framework/build output generated by TanStack Start + Nitro and the deployment platform configuration outside this repository.
+
+## Current Working Configuration
+
+Important current configuration details:
+
+- `vite.config.ts`:
+  - Uses `tanstackStart({ server: { entry: "server" } })`.
+  - Uses `nitro({ preset: process.env.NITRO_PRESET ?? "vercel" })`.
+  - Uses React, Tailwind, and TypeScript path plugins.
+  - Dedupe is configured for TanStack Router/Start and React packages.
+- `nitro.config.ts`:
+  - Uses `process.env.NITRO_PRESET || "vercel"`.
+- `package.json`:
+  - Depends on TanStack Start, TanStack Router, Supabase, React 19, Vite 7, Tailwind 4, Nitro beta, and the shadcn/Radix-style UI stack.
+  - Exposes `build`, `dev`, `preview`, `lint`, `format`, `images:build`, and `start` scripts.
+- `tsconfig.json`:
+  - Uses bundler module resolution.
+  - Defines `@/*` path mapping to `./src/*`.
+  - Runs TypeScript in strict/no-emit mode.
+- `eslint.config.js`:
+  - Ignores generated build output directories.
+  - Applies TypeScript and React Hooks rules.
+  - Disallows importing the Next.js `server-only` package because this is a TanStack Start project.
+
+## Environment Variables Required
+
+The following variable names are referenced by the current codebase. Production/staging environments must provide the values appropriate to that environment.
+
+### Required for browser/client Supabase usage
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_PUBLISHABLE_KEY`
+
+The browser client can fall back to server-style names in some runtime paths, but the `VITE_` variables are the expected public client variables because they are exposed by Vite.
+
+### Required for server Supabase/auth middleware
+
+- `SUPABASE_URL`
+- `SUPABASE_PUBLISHABLE_KEY`
+
+### Required only for trusted server/admin Supabase operations
+
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+This key must never be exposed to the browser. Only server-only modules should read it.
+
+### Optional / deployment-specific
+
+- `NITRO_PRESET` — optional. Defaults to `vercel`. Changing this can change deployment output and must be reviewed.
+- `NODE_ENV` — standard runtime mode variable read by `src/lib/config.server.ts`.
+- `VITE_SUPABASE_PROJECT_ID` — present in the local `.env` key list and may be used by tooling or generated Supabase/Lovable context, but no current source reference was found during the audit.
+
+## Important Files
+
+| File or directory | Purpose | Change guidance |
+| --- | --- | --- |
+| `vite.config.ts` | Primary Vite/TanStack Start/Nitro build configuration. | Do not change without deployment review. |
+| `nitro.config.ts` | Nitro preset configuration; defaults to Vercel. | Do not change without deployment review. |
+| `package.json` | Scripts and dependency versions. | Dependency/build script changes need review and deployment testing. |
+| `bunfig.toml` | Bun install supply-chain guard. | Preserve unless package-manager policy changes. |
+| `src/server.ts` | TanStack Start server entry and catastrophic SSR error normalization. | Do not alter casually; production error handling depends on it. |
+| `src/start.ts` | TanStack Start request middleware. | Review before changing error behavior. |
+| `src/routes/__root.tsx` | Root layout, providers, metadata, error/not-found UI, required `<Outlet />`. | Removing/changing `<Outlet />` breaks child routes. |
+| `src/routes/` | File-based route definitions. | Route additions/removals/renames affect production URLs. |
+| `src/routeTree.gen.ts` | Generated TanStack route tree. | Do not edit by hand. |
+| `src/integrations/supabase/` | Supabase clients, auth middleware, generated DB types. | Auth/data changes require review. |
+| `src/lib/auth-context.tsx` | Shared auth/session/profile provider. | Changes affect login/session UX. |
+| `supabase/config.toml` | Supabase project configuration. | Changes affect Supabase local/project behavior. |
+| `supabase/migrations/` | Database schema migrations. | Never delete or reorder without database review. |
+| `src/components/` | UI, brand, onboarding, reseller, and marketing components. | UI changes are out of scope for baseline stabilization. |
+| `public/` and `src/assets/` | Static images/assets. | Do not remove without proving unused references. |
+| `src/routes/README.md` | Existing route convention documentation. | Keep aligned with TanStack Start routing. |
+
+## Files Modified During the Deployment Fix Process
+
+Repository history identifies the production deployment fix as the sequence ending in merge commit `6d8169f` and including deployment-focused commits `fa0cb3f` and `d5db224`.
+
+### `fa0cb3f` — `Add Nitro config for Vercel deployment`
+
+- Added `nitro.config.ts`.
+
+### `d5db224` — `Fix TanStack Start Vercel deployment config`
+
+Modified:
+
+- `bunfig.toml`
+- `package.json`
+- `src/integrations/supabase/auth-middleware.ts`
+- `src/integrations/supabase/client.server.ts`
+- `src/integrations/supabase/client.ts`
+- `src/routes/__root.tsx`
+- `src/routes/login.tsx`
+- `src/routes/register.tsx`
+- `vite.config.ts`
+
+Removed in that historical deployment-fix commit:
+
+- `.lovable/plan.md`
+- `.lovable/project.json`
+- `bun.lock`
+- `package-lock.json`
+- `src/integrations/lovable/index.ts`
+- `src/lib/lovable-error-reporting.ts`
+
+These removals are historical facts from Git history, not recommendations for future cleanup. The current stabilization task did not remove Lovable, Supabase, Nitro, TanStack, or deployment-related files.
+
+## What Must Not Be Changed Without Review
+
+Do not change the following without explicit review and deployment validation:
+
+- `vite.config.ts`
+- `nitro.config.ts`
+- `package.json` build/start scripts or core framework dependencies
+- `src/server.ts`
+- `src/start.ts`
+- `src/routes/__root.tsx`, especially the provider stack and `<Outlet />`
+- File names/layout under `src/routes/`
+- Supabase clients and middleware under `src/integrations/supabase/`
+- `src/lib/auth-context.tsx`
+- Supabase migrations and `supabase/config.toml`
+- Environment variable names and secrets configuration
+- Vercel/Nitro deployment preset behavior
+- Static asset paths used by UI components
+
+## Deployment Dependencies
+
+Production deployment depends on:
+
+- A Node/Bun-compatible install environment for the dependencies in `package.json`.
+- Vite build execution.
+- TanStack Start server entry generation.
+- Nitro Vercel preset output.
+- Vercel project settings that run the build and serve Nitro output.
+- Supabase project availability and correct public/server environment variables.
+- External Google Fonts and Google Website Translator script availability for current UI behavior.
+- Existing image/static asset paths remaining stable.
+
+## GitHub Repository Status
+
+Local Git status at audit time:
+
+- Current branch: `work`.
+- Current commit: `6d8169f`.
+- Commit subject: `Merge pull request #1 from cartory7107/codex/audit-codebase-to-find-production-404-cause`.
+- The local repository has no configured remotes, so direct `origin/main` verification was not possible from this environment.
+- The current checked-out commit is a GitHub-authored merge commit and is treated here as the available production baseline/source-of-truth representation.
+
+## Baseline Rule for Future Work
+
+Before making future changes:
+
+1. Confirm the live GitHub `main` branch and production deployment commit.
+2. Start from the production baseline, not from speculative local cleanup.
+3. Preserve TanStack Start + Nitro + Vercel configuration unless a reviewed deployment change is required.
+4. Preserve Supabase integration unless an auth/data change is explicitly requested and tested.
+5. Make the smallest possible change for the requested task.
+6. Run at least `npm run build` or the deployment-equivalent build command before release.
