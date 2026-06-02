@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import img5 from "@/assets/luxe-5.jpg";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 function useCountdown(targetMs: number) {
   const [now, setNow] = useState(() => Date.now());
@@ -66,8 +67,7 @@ export function FlashSale() {
 
             <div className="relative">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-luxe card-3d">
-                <img src={img5} alt="Featured release" loading="lazy" width={600} height={750}
-                  className="h-full w-full object-cover" />
+                <OptimizedImage src={img5} alt="Featured release" width={600} height={750} className="h-full w-full object-cover" />
                 <div className="absolute inset-x-4 bottom-4 glass-dark rounded-xl p-4">
                   <div className="eyebrow text-[var(--gold)]">Featured Release</div>
                   <div className="mt-1 font-serif text-2xl">Obscura Nº 7 · Flacon Noir</div>

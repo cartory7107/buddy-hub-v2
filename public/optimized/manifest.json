@@ -1,0 +1,77 @@
+{
+  "cartory-logo.png": {
+    "fallback": "/optimized/cartory-logo.png",
+    "webp": "/optimized/cartory-logo-320.webp 320w, /optimized/cartory-logo-480.webp 480w, /optimized/cartory-logo-768.webp 768w, /optimized/cartory-logo-1024.webp 1024w, /optimized/cartory-logo-1600.webp 1600w",
+    "avif": "/optimized/cartory-logo-320.avif 320w, /optimized/cartory-logo-480.avif 480w, /optimized/cartory-logo-768.avif 768w, /optimized/cartory-logo-1024.avif 1024w, /optimized/cartory-logo-1600.avif 1600w"
+  },
+  "cat-earbuds.jpg": {
+    "fallback": "/optimized/cat-earbuds.jpg",
+    "webp": "/optimized/cat-earbuds-320.webp 320w, /optimized/cat-earbuds-480.webp 480w, /optimized/cat-earbuds-768.webp 768w, /optimized/cat-earbuds-1024.webp 1024w, /optimized/cat-earbuds-1600.webp 1600w",
+    "avif": "/optimized/cat-earbuds-320.avif 320w, /optimized/cat-earbuds-480.avif 480w, /optimized/cat-earbuds-768.avif 768w, /optimized/cat-earbuds-1024.avif 1024w, /optimized/cat-earbuds-1600.avif 1600w"
+  },
+  "cat-gadget.jpg": {
+    "fallback": "/optimized/cat-gadget.jpg",
+    "webp": "/optimized/cat-gadget-320.webp 320w, /optimized/cat-gadget-480.webp 480w, /optimized/cat-gadget-768.webp 768w, /optimized/cat-gadget-1024.webp 1024w, /optimized/cat-gadget-1600.webp 1600w",
+    "avif": "/optimized/cat-gadget-320.avif 320w, /optimized/cat-gadget-480.avif 480w, /optimized/cat-gadget-768.avif 768w, /optimized/cat-gadget-1024.avif 1024w, /optimized/cat-gadget-1600.avif 1600w"
+  },
+  "cat-lifestyle.jpg": {
+    "fallback": "/optimized/cat-lifestyle.jpg",
+    "webp": "/optimized/cat-lifestyle-320.webp 320w, /optimized/cat-lifestyle-480.webp 480w, /optimized/cat-lifestyle-768.webp 768w, /optimized/cat-lifestyle-1024.webp 1024w, /optimized/cat-lifestyle-1600.webp 1600w",
+    "avif": "/optimized/cat-lifestyle-320.avif 320w, /optimized/cat-lifestyle-480.avif 480w, /optimized/cat-lifestyle-768.avif 768w, /optimized/cat-lifestyle-1024.avif 1024w, /optimized/cat-lifestyle-1600.avif 1600w"
+  },
+  "cat-phone.jpg": {
+    "fallback": "/optimized/cat-phone.jpg",
+    "webp": "/optimized/cat-phone-320.webp 320w, /optimized/cat-phone-480.webp 480w, /optimized/cat-phone-768.webp 768w, /optimized/cat-phone-1024.webp 1024w, /optimized/cat-phone-1600.webp 1600w",
+    "avif": "/optimized/cat-phone-320.avif 320w, /optimized/cat-phone-480.avif 480w, /optimized/cat-phone-768.avif 768w, /optimized/cat-phone-1024.avif 1024w, /optimized/cat-phone-1600.avif 1600w"
+  },
+  "cat-speaker.jpg": {
+    "fallback": "/optimized/cat-speaker.jpg",
+    "webp": "/optimized/cat-speaker-320.webp 320w, /optimized/cat-speaker-480.webp 480w, /optimized/cat-speaker-768.webp 768w, /optimized/cat-speaker-1024.webp 1024w, /optimized/cat-speaker-1600.webp 1600w",
+    "avif": "/optimized/cat-speaker-320.avif 320w, /optimized/cat-speaker-480.avif 480w, /optimized/cat-speaker-768.avif 768w, /optimized/cat-speaker-1024.avif 1024w, /optimized/cat-speaker-1600.avif 1600w"
+  },
+  "cat-tech.jpg": {
+    "fallback": "/optimized/cat-tech.jpg",
+    "webp": "/optimized/cat-tech-320.webp 320w, /optimized/cat-tech-480.webp 480w, /optimized/cat-tech-768.webp 768w, /optimized/cat-tech-1024.webp 1024w, /optimized/cat-tech-1600.webp 1600w",
+    "avif": "/optimized/cat-tech-320.avif 320w, /optimized/cat-tech-480.avif 480w, /optimized/cat-tech-768.avif 768w, /optimized/cat-tech-1024.avif 1024w, /optimized/cat-tech-1600.avif 1600w"
+  },
+  "cat-trending.jpg": {
+    "fallback": "/optimized/cat-trending.jpg",
+    "webp": "/optimized/cat-trending-320.webp 320w, /optimized/cat-trending-480.webp 480w, /optimized/cat-trending-768.webp 768w, /optimized/cat-trending-1024.webp 1024w, /optimized/cat-trending-1600.webp 1600w",
+    "avif": "/optimized/cat-trending-320.avif 320w, /optimized/cat-trending-480.avif 480w, /optimized/cat-trending-768.avif 768w, /optimized/cat-trending-1024.avif 1024w, /optimized/cat-trending-1600.avif 1600w"
+  },
+  "cat-watch.jpg": {
+    "fallback": "/optimized/cat-watch.jpg",
+    "webp": "/optimized/cat-watch-320.webp 320w, /optimized/cat-watch-480.webp 480w, /optimized/cat-watch-768.webp 768w, /optimized/cat-watch-1024.webp 1024w, /optimized/cat-watch-1600.webp 1600w",
+    "avif": "/optimized/cat-watch-320.avif 320w, /optimized/cat-watch-480.avif 480w, /optimized/cat-watch-768.avif 768w, /optimized/cat-watch-1024.avif 1024w, /optimized/cat-watch-1600.avif 1600w"
+  },
+  "luxe-1.jpg": {
+    "fallback": "/optimized/luxe-1.jpg",
+    "webp": "/optimized/luxe-1-320.webp 320w, /optimized/luxe-1-480.webp 480w, /optimized/luxe-1-768.webp 768w, /optimized/luxe-1-1024.webp 1024w, /optimized/luxe-1-1600.webp 1600w",
+    "avif": "/optimized/luxe-1-320.avif 320w, /optimized/luxe-1-480.avif 480w, /optimized/luxe-1-768.avif 768w, /optimized/luxe-1-1024.avif 1024w, /optimized/luxe-1-1600.avif 1600w"
+  },
+  "luxe-2.jpg": {
+    "fallback": "/optimized/luxe-2.jpg",
+    "webp": "/optimized/luxe-2-320.webp 320w, /optimized/luxe-2-480.webp 480w, /optimized/luxe-2-768.webp 768w, /optimized/luxe-2-1024.webp 1024w, /optimized/luxe-2-1600.webp 1600w",
+    "avif": "/optimized/luxe-2-320.avif 320w, /optimized/luxe-2-480.avif 480w, /optimized/luxe-2-768.avif 768w, /optimized/luxe-2-1024.avif 1024w, /optimized/luxe-2-1600.avif 1600w"
+  },
+  "luxe-3.jpg": {
+    "fallback": "/optimized/luxe-3.jpg",
+    "webp": "/optimized/luxe-3-320.webp 320w, /optimized/luxe-3-480.webp 480w, /optimized/luxe-3-768.webp 768w, /optimized/luxe-3-1024.webp 1024w, /optimized/luxe-3-1600.webp 1600w",
+    "avif": "/optimized/luxe-3-320.avif 320w, /optimized/luxe-3-480.avif 480w, /optimized/luxe-3-768.avif 768w, /optimized/luxe-3-1024.avif 1024w, /optimized/luxe-3-1600.avif 1600w"
+  },
+  "luxe-4.jpg": {
+    "fallback": "/optimized/luxe-4.jpg",
+    "webp": "/optimized/luxe-4-320.webp 320w, /optimized/luxe-4-480.webp 480w, /optimized/luxe-4-768.webp 768w, /optimized/luxe-4-1024.webp 1024w, /optimized/luxe-4-1600.webp 1600w",
+    "avif": "/optimized/luxe-4-320.avif 320w, /optimized/luxe-4-480.avif 480w, /optimized/luxe-4-768.avif 768w, /optimized/luxe-4-1024.avif 1024w, /optimized/luxe-4-1600.avif 1600w"
+  },
+  "luxe-5.jpg": {
+    "fallback": "/optimized/luxe-5.jpg",
+    "webp": "/optimized/luxe-5-320.webp 320w, /optimized/luxe-5-480.webp 480w, /optimized/luxe-5-768.webp 768w, /optimized/luxe-5-1024.webp 1024w, /optimized/luxe-5-1600.webp 1600w",
+    "avif": "/optimized/luxe-5-320.avif 320w, /optimized/luxe-5-480.avif 480w, /optimized/luxe-5-768.avif 768w, /optimized/luxe-5-1024.avif 1024w, /optimized/luxe-5-1600.avif 1600w"
+  },
+  "luxe-6.jpg": {
+    "fallback": "/optimized/luxe-6.jpg",
+    "webp": "/optimized/luxe-6-320.webp 320w, /optimized/luxe-6-480.webp 480w, /optimized/luxe-6-768.webp 768w, /optimized/luxe-6-1024.webp 1024w, /optimized/luxe-6-1600.webp 1600w",
+    "avif": "/optimized/luxe-6-320.avif 320w, /optimized/luxe-6-480.avif 480w, /optimized/luxe-6-768.avif 768w, /optimized/luxe-6-1024.avif 1024w, /optimized/luxe-6-1600.avif 1600w"
+  }
+}

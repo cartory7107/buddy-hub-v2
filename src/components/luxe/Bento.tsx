@@ -3,6 +3,7 @@ import img1 from "@/assets/luxe-1.jpg";
 import img3 from "@/assets/luxe-3.jpg";
 import img4 from "@/assets/luxe-4.jpg";
 import img6 from "@/assets/luxe-6.jpg";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 const tiles = [
   { img: img3, eyebrow: "Editorial · 01", title: "Marble dreams in liquid gold", accent: "var(--gold)", big: true },
@@ -28,7 +29,7 @@ export function Bento() {
           {tiles.map((t, i) => (
             <a key={i} href="#"
               className={`relative group overflow-hidden rounded-3xl ring-luxe ${t.big ? "md:col-span-2 md:row-span-2" : ""}`}>
-              <img src={t.img} alt={t.title} loading="lazy" width={1200} height={800}
+              <OptimizedImage src={t.img} alt={t.title} width={1200} height={800}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--obsidian)] via-[var(--obsidian)]/40 to-transparent" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
