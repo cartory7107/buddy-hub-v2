@@ -1,6 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { lovable } from "@/integrations/lovable";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { Logo } from "@/components/brand/Logo";
@@ -45,10 +44,13 @@ function RegisterPage() {
 
   const handleGoogle = async () => {
     setLoading(true); setError(null);
-    const r = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin + "/dashboard",
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin + "/dashboard",
+      },
     });
-    if (r.error) { setError(r.error.message ?? "Sign in failed"); setLoading(false); }
+    if (error) { setError(error.message ?? "Sign in failed"); setLoading(false); }
   };
 
   return (
