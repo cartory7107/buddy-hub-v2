@@ -15,22 +15,13 @@ const colA: Cat[] = [
   { src: watch, label: "Smart Watches" },
   { src: earbuds, label: "Earbuds" },
   { src: speaker, label: "Speakers" },
-  { src: watch, label: "Smart Watches" },
-  { src: earbuds, label: "Earbuds" },
-  { src: speaker, label: "Speakers" },
 ];
 const colB: Cat[] = [
   { src: gadget, label: "Gadgets" },
   { src: phone, label: "Phone Accessories" },
   { src: tech, label: "Tech Accessories" },
-  { src: gadget, label: "Gadgets" },
-  { src: phone, label: "Phone Accessories" },
-  { src: tech, label: "Tech Accessories" },
 ];
 const colC: Cat[] = [
-  { src: trending, label: "Trending Now" },
-  { src: lifestyle, label: "Lifestyle" },
-  { src: earbuds, label: "Earbuds" },
   { src: trending, label: "Trending Now" },
   { src: lifestyle, label: "Lifestyle" },
   { src: earbuds, label: "Earbuds" },
@@ -41,7 +32,7 @@ function ScrollColumn({ items, reverse }: { items: Cat[]; reverse?: boolean }) {
   return (
     <div className="relative h-[360px] sm:h-[460px] md:h-[560px] overflow-hidden mask-fade-y">
       <div className={`flex flex-col gap-4 ${reverse ? "animate-scroll-y-rev" : "animate-scroll-y"}`}>
-        {items.concat(items).map((it, i) => {
+        {items.map((it, i) => {
           const isPriority = i < originalLen; // first visible image set in each film-strip column
           return (
             <div key={i} className="group relative aspect-[3/4] rounded-2xl overflow-hidden ring-luxe">

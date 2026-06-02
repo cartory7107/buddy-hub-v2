@@ -10,11 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import logoUrl from "@/assets/cartory-logo.png?url";
-import watchUrl from "@/assets/cat-watch.jpg?url";
-import earbudsUrl from "@/assets/cat-earbuds.jpg?url";
-import speakerUrl from "@/assets/cat-speaker.jpg?url";
-import gadgetUrl from "@/assets/cat-gadget.jpg?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "@/lib/auth-context";
 
@@ -97,11 +92,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9cf450e0-f748-45c4-a125-d99a848b30a8/id-preview-feb06c93--c531158f-94a4-4b12-8284-acb2732aae6c.lovable.app-1780145820773.png" },
     ],
     links: [
-      { rel: "preload", as: "image", href: logoUrl },
-      { rel: "preload", as: "image", href: watchUrl },
-      { rel: "preload", as: "image", href: earbudsUrl },
-      { rel: "preload", as: "image", href: speakerUrl },
-      { rel: "preload", as: "image", href: gadgetUrl },
       {
         rel: "stylesheet",
         href: appCss,
