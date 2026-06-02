@@ -4,12 +4,20 @@
 //     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+import process from "node:process";
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+const preset = process.env.NITRO_PRESET || "vercel";
 
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+  },
+  // Force-enable Nitro to produce .output/ for Vercel/Netlify deployment
+  // Pass preset via environment or explicitly (for standalone builds outside Lovable Cloud)
+  nitro: {
+    preset,
   },
 });
