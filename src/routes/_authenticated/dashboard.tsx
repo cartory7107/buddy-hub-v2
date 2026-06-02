@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { Package, TrendingUp, Wallet, Trophy, Target, ShieldCheck, ArrowUpRight } from "lucide-react";
-import OptimizedImage from "@/components/ui/OptimizedImage";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({ meta: [{ title: "Command Center — Cartory Dropship" }] }),
@@ -128,7 +127,7 @@ function Dashboard() {
             return (
               <div key={p.id} className="glass-dark ring-luxe rounded-2xl p-4 card-3d">
                 <div className="aspect-[4/3] rounded-xl overflow-hidden bg-secondary/40 mb-3">
-                  {p.image_url && <OptimizedImage src={p.image_url} alt={p.title} width={400} height={300} className="h-full w-full object-cover" />}
+                  {p.image_url && <img src={p.image_url} alt={p.title} className="h-full w-full object-cover" />}
                 </div>
                 <div className="eyebrow text-muted-foreground">{p.category ?? "General"}</div>
                 <div className="font-serif text-lg mt-1 line-clamp-1">{p.title}</div>

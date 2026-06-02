@@ -315,47 +315,6 @@
   }
 }
 
-/* Mobile-friendly reductions: disable heavy visuals and long-running animations on small screens */
-@media (max-width: 640px) {
-  .glass-dark {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: 1px solid color-mix(in oklab, var(--platinum) 6%, transparent);
-  }
-
-  .shadow-luxe, .glow-neon, .glow-gold, .shadow-gold, .ring-luxe {
-    box-shadow: none !important;
-  }
-
-  .mask-fade-y, .mask-fade-x {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-
-  /* Disable decorative animations on small screens to improve performance and reduce visual noise */
-  .card-3d, .next-arrow-disc, .animate-marquee, .animate-scroll-y, .animate-scroll-y-rev,
-  .animate-float, .animate-pulse-gold, .animate-pulse-neon, .animate-pulse-subtle, .tour-active {
-    animation: none !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  /* Reduce large backdrop blurs used for heroic background blobs */
-  [class*="blur-"] {
-    filter: blur(48px) !important;
-  }
-
-  /* Limit heavy gradients and shadows to save GPU on mobile */
-  .luxe-gradient { background: linear-gradient(135deg, var(--obsidian), oklch(0.14 0.01 290) 60%); }
-
-  /* Make interactive transforms inert on touch devices to avoid accidental motion */
-  .next-arrow-3d:hover { transform: none !important; }
-
-  /* Reduce or remove long-running scroll/marquee animations */
-  .animate-marquee, .animate-scroll-y, .animate-scroll-y-rev { animation-play-state: paused !important; }
-
-}
-
 /* ===== Google Website Translator: hide banner/toolbar so UI stays clean ===== */
 .goog-te-banner-frame.skiptranslate,
 .goog-te-gadget,

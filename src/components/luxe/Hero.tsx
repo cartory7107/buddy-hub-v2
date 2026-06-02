@@ -1,6 +1,5 @@
 import { ArrowUpRight, ArrowRight, ShieldCheck, TrendingUp, Trophy, Sparkles, LogIn, UserPlus } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import OptimizedImage from "@/components/ui/OptimizedImage";
 import watch from "@/assets/cat-watch.jpg";
 import earbuds from "@/assets/cat-earbuds.jpg";
 import speaker from "@/assets/cat-speaker.jpg";
@@ -15,8 +14,14 @@ const colA: Cat[] = [
   { src: watch, label: "Smart Watches" },
   { src: earbuds, label: "Earbuds" },
   { src: speaker, label: "Speakers" },
+  { src: watch, label: "Smart Watches" },
+  { src: earbuds, label: "Earbuds" },
+  { src: speaker, label: "Speakers" },
 ];
 const colB: Cat[] = [
+  { src: gadget, label: "Gadgets" },
+  { src: phone, label: "Phone Accessories" },
+  { src: tech, label: "Tech Accessories" },
   { src: gadget, label: "Gadgets" },
   { src: phone, label: "Phone Accessories" },
   { src: tech, label: "Tech Accessories" },
@@ -25,36 +30,35 @@ const colC: Cat[] = [
   { src: trending, label: "Trending Now" },
   { src: lifestyle, label: "Lifestyle" },
   { src: earbuds, label: "Earbuds" },
+  { src: trending, label: "Trending Now" },
+  { src: lifestyle, label: "Lifestyle" },
+  { src: earbuds, label: "Earbuds" },
 ];
 
 function ScrollColumn({ items, reverse }: { items: Cat[]; reverse?: boolean }) {
-  const originalLen = items.length;
   return (
-    <div className="relative h-[360px] sm:h-[460px] md:h-[560px] overflow-hidden mask-fade-y">
+    <div className="relative h-[560px] overflow-hidden mask-fade-y">
       <div className={`flex flex-col gap-4 ${reverse ? "animate-scroll-y-rev" : "animate-scroll-y"}`}>
-        {items.map((it, i) => {
-          const isPriority = i < originalLen; // first visible image set in each film-strip column
-          return (
-            <div key={i} className="group relative aspect-[3/4] rounded-2xl overflow-hidden ring-luxe">
-              <OptimizedImage
-                src={it.src}
-                alt={it.label}
-                width={400}
-                height={533}
-                priority={isPriority}
-                className="transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
-              <div className="absolute left-3 bottom-3 right-3 flex items-center justify-between">
-                <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white drop-shadow">
-                  {it.label}
-                </span>
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--neon)] shadow-[0_0_12px_var(--neon)]" />
-              </div>
+        {items.concat(items).map((it, i) => (
+          <div key={i} className="group relative aspect-[3/4] rounded-2xl overflow-hidden ring-luxe">
+            <img
+              src={it.src}
+              alt={it.label}
+              loading="lazy"
+              width={400}
+              height={533}
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
+            <div className="absolute left-3 bottom-3 right-3 flex items-center justify-between">
+              <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white drop-shadow">
+                {it.label}
+              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--neon)] shadow-[0_0_12px_var(--neon)]" />
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -70,7 +74,7 @@ export function Hero() {
         <div className="animate-fade-up">
           <div className="inline-flex items-center gap-3 mb-8 rounded-full glass-dark ring-luxe px-4 py-2">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--neon)] opacity-75 animate-ping hidden sm:inline-flex" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--neon)] opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--neon)]" />
             </span>
             <span className="text-xs font-semibold tracking-wide text-foreground/90">
@@ -149,9 +153,9 @@ export function Hero() {
 
         {/* Film strip */}
         <div className="relative animate-fade-up" style={{ animationDelay: "0.15s" }}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4">
             <ScrollColumn items={colA} />
-            <div className="mt-4 sm:mt-12"><ScrollColumn items={colB} reverse /></div>
+            <div className="mt-12"><ScrollColumn items={colB} reverse /></div>
             <ScrollColumn items={colC} />
           </div>
 

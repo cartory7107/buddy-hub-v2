@@ -1,5 +1,4 @@
 import { Heart, Shield, Star } from "lucide-react";
-import OptimizedImage from "@/components/ui/OptimizedImage";
 import img1 from "@/assets/luxe-1.jpg";
 import img2 from "@/assets/luxe-2.jpg";
 import img3 from "@/assets/luxe-3.jpg";
@@ -36,7 +35,8 @@ export function Products() {
           {products.map((p, i) => (
             <article key={i} className="group">
               <div className="relative aspect-square rounded-2xl overflow-hidden ring-luxe card-3d bg-card">
-                <OptimizedImage src={p.img} alt={p.name} width={500} height={500} className="transition-transform duration-700 group-hover:scale-110" />
+                <img src={p.img} alt={p.name} loading="lazy" width={500} height={500}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--obsidian)]/80 via-[var(--obsidian)]/10 to-transparent transition-opacity duration-500 group-hover:from-[var(--obsidian)]/95" />
 
                 {/* wishlist */}

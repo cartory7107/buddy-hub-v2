@@ -4,7 +4,6 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { Search, Lock } from "lucide-react";
-import OptimizedImage from "@/components/ui/OptimizedImage";
 
 export const Route = createFileRoute("/_authenticated/products")({
   head: () => ({ meta: [{ title: "Product Center — Cartory Dropship" }] }),
@@ -56,7 +55,7 @@ function ProductCenter() {
           return (
             <div key={p.id} className="glass-dark ring-luxe rounded-2xl p-4 card-3d">
               <div className="aspect-[4/3] rounded-xl overflow-hidden bg-secondary/40 mb-3 relative">
-                {p.image_url && <OptimizedImage src={p.image_url} alt={p.title} width={400} height={300} className="h-full w-full object-cover" />}
+                {p.image_url && <img src={p.image_url} alt={p.title} className="h-full w-full object-cover" />}
                 <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-background/60 backdrop-blur eyebrow">{p.category ?? "Item"}</span>
               </div>
               <div className="font-serif text-lg line-clamp-1">{p.title}</div>

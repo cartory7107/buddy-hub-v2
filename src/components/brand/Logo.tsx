@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/cartory-logo.png";
-import OptimizedImage from "@/components/ui/OptimizedImage";
 
 type Props = {
   size?: number;
@@ -23,7 +22,14 @@ export function Logo({
         className="relative shrink-0 rounded-2xl bg-white grid place-items-center ring-1 ring-white/15 shadow-[0_8px_30px_-10px_rgba(168,85,247,0.45)]"
         style={{ height: size, width: size, padding: Math.max(4, Math.round(size * 0.08)) }}
       >
-        <OptimizedImage src={logo} alt="Cartory" width={size} height={size} priority className="h-full w-full object-contain" />
+        <img
+          src={logo}
+          alt="Cartory"
+          width={size}
+          height={size}
+          className="h-full w-full object-contain"
+          draggable={false}
+        />
       </span>
       {showWordmark && (
         <span className="leading-tight">
